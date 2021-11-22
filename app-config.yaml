@@ -24,20 +24,26 @@ backend:
     store: memory
   # workingDirectory: /tmp # Use this to configure a working directory for the scaffolder, defaults to the OS temp-dir
 
-integrations:
-  bitbucket:
-    - host: bitbucket.org
-      username: pbhattad@healthedge.com
-      appPassword: Outlier2021!
+# integrations:
+#   bitbucket:
+#     - host: bitbucket.org
+#       username: abc
+#       appPassword: abc
     ### Example for how to add your GitHub Enterprise instance using the API:
     # - host: ghe.example.net
     #   apiBaseUrl: https://ghe.example.net/api/v3
     #   token: ${GHE_TOKEN}
 
 proxy:
-  '/test':
-    target: 'https://example.com'
-    changeOrigin: true
+  '/sonarqube':
+    target: http://sonar:9000/api/webservices/list
+    allowedMethods: ['GET']
+    auth: '${SONARQUBE_TOKEN}:'
+    # Environmental variable: SONARQUBE_TOKEN
+    # Fetch the sonar-auth-token from https://sonarcloud.io/account/security/
+
+sonarQube:
+  baseUrl: http://sonar:9000
 
 # Reference documentation http://backstage.io/docs/features/techdocs/configuration
 # Note: After experimenting with basic setup, use CI/CD to generate docs

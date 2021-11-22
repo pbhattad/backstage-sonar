@@ -17,10 +17,10 @@ import React from 'react';
 import { Button, Grid } from '@material-ui/core';
 import {
   EntityApiDefinitionCard,
-  EntityConsumedApisCard,
+  // EntityConsumedApisCard,
   EntityConsumingComponentsCard,
   EntityHasApisCard,
-  EntityProvidedApisCard,
+  // EntityProvidedApisCard,
   EntityProvidingComponentsCard,
 } from '@backstage/plugin-api-docs';
 import {
@@ -54,6 +54,7 @@ import {
 } from '@backstage/plugin-org';
 import { EntityTechdocsContent } from '@backstage/plugin-techdocs';
 import { EmptyState } from '@backstage/core-components';
+import { EntitySonarQubeCard } from '@backstage/plugin-sonarqube';
 import {
   EntityJenkinsContent,
   EntityLatestJenkinsRunCard,
@@ -144,6 +145,9 @@ const overviewContent = (
     </Grid>
     <Grid item md={8} xs={12}>
       <EntityHasSubcomponentsCard variant="gridItem" />
+    </Grid>
+    <Grid item md={6}>
+      <EntitySonarQubeCard variant="gridItem" />
     </Grid>
   </Grid>
 );
