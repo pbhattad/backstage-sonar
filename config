@@ -1,0 +1,4 @@
+jenkins:
+  baseUrl: http://engsvc-engjen1:8080/
+  username: pbhattad
+  apiKey: 1189e14d7c69e7c125930fd99386e83e58

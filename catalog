@@ -1,0 +1,6 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: connector-enrollment
+  annotations:
+    'http://engsvc-engjen1:8080/job/Enrollment': Latest/job/connector-enrollment-commit/
