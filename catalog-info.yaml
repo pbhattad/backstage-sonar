@@ -5,7 +5,7 @@ metadata:
   description: |
     Backstage is an open-source developer portal that puts the developer experience first.
   annotations:
-    sonarqube.org/project-key: com.healthedge.connector:connector-versions
+    sonarqube.org/project-key: com.healthedge.core:core-parent
 spec:
   type: library
   owner: guest
