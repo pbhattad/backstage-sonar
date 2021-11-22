@@ -4,7 +4,8 @@ metadata:
   name: backstage-app
   description: An example of a Backstage application.
   annotations:
-    'http://engsvc-engjen1:8080/job/Enrollment': /job/Latest/job/connector-enrollment-commit/
+    # 'http://engsvc-engjen1:8080/job/Enrollment': /job/Latest/job/connector-enrollment-commit/
+    'jenkins.io/job-full-name': /job/Latest/job/connector-enrollment-commit/
   # Example for optional annotations
   # annotations:
   #   github.com/project-slug: backstage/backstage
