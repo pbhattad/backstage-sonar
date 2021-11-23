@@ -158,7 +158,7 @@ const overviewContent = (
           </Grid>
         </EntitySwitch.Case>
       </EntitySwitch>
-    </Grid>
+  </Grid>
   </Grid>
   
 );
