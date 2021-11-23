@@ -16,7 +16,7 @@ backend:
       - "'self'"
       - 'data:'
       # Allow your Jira instance for @roadiehq/backstage-plugin-jira
-      - https://jira.healthedge.net/api
+      - https://jira.healthedge.net
     # Content-Security-Policy directives follow the Helmet format: https://helmetjs.github.io/#reference
     # Default Helmet Content-Security-Policy values can be removed by setting the key to false
   cors:
@@ -47,15 +47,17 @@ proxy:
     auth: '${SONARQUBE_TOKEN}:'
     # Environmental variable: SONARQUBE_TOKEN
     # Fetch the sonar-auth-token from https://sonarcloud.io/account/security/
-  '/jira':
+  '/jira/api':
     target: https://jira.healthedge.net
-    headers:
-      Authorization:
-        $env: JIRA_TOKEN
-      Accept: 'application/json'
-      Content-Type: 'application/json'
-      X-Atlassian-Token: 'nocheck'
-      User-Agent: "MY-UA-STRING"
+    allowedMethods: ['GET']
+    auth: '${JIRA_TOKEN}:'
+    # headers:
+    #   Authorization:
+    #     $env: JIRA_TOKEN
+    #   Accept: 'application/json'
+    #   Content-Type: 'application/json'
+    #   X-Atlassian-Token: 'nocheck'
+    #   User-Agent: "MY-UA-STRING"
 
 sonarQube:
   baseUrl: http://sonar:9000
