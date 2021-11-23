@@ -60,6 +60,7 @@ import {
   EntityLatestJenkinsRunCard,
   isJenkinsAvailable,
 } from '@backstage/plugin-jenkins';
+import { EntityJiraOverviewCard, isJiraAvailable } from '@roadiehq/backstage-plugin-jira';
 
 const serviceEntityPage = (
   <EntityLayout>
@@ -149,7 +150,17 @@ const overviewContent = (
     <Grid item md={6}>
       <EntitySonarQubeCard variant="gridItem" />
     </Grid>
+    <Grid container spacing={3} alignItems="stretch">
+      <EntitySwitch>
+        <EntitySwitch.Case if={isJiraAvailable}>
+          <Grid item md={6}>
+            <EntityJiraOverviewCard />
+          </Grid>
+        </EntitySwitch.Case>
+      </EntitySwitch>
+    </Grid>
   </Grid>
+  
 );
 
 const websiteEntityPage = (
