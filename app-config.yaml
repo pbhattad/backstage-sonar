@@ -33,8 +33,7 @@ backend:
 integrations:
   bitbucket:
     - host: bitbucket.org
-      username: abc
-      appPassword: abc
+      token: ${BITBUCKET_TOKEN}
     ### Example for how to add your GitHub Enterprise instance using the API:
     # - host: ghe.example.net
     #   apiBaseUrl: https://ghe.example.net/api/v3
@@ -47,22 +46,19 @@ proxy:
     auth: '${SONARQUBE_TOKEN}:'
     # Environmental variable: SONARQUBE_TOKEN
     # Fetch the sonar-auth-token from https://sonarcloud.io/account/security/
-  '/jira':
+  '/jira/api':
     target: https://jira.healthedge.net
-    allowedMethods: ['GET']
-    auth: '${JIRA_TOKEN}:'
-    # headers:
-    #   Authorization:
-    #     $env: JIRA_TOKEN
-    #   Accept: 'application/json'
-    #   Content-Type: 'application/json'
-    #   X-Atlassian-Token: 'nocheck'
-    #   User-Agent: "MY-UA-STRING"
+    headers:
+      Authorization:
+        $env: JIRA_TOKEN
+      Accept: 'application/json'
+      Content-Type: 'application/json'
+      X-Atlassian-Token: 'no-check'
+      # This is a workaround since Jira APIs reject browser origin requests. Any dummy string without whitespace works.
+      User-Agent: "AnyRandomString"
 
 sonarQube:
   baseUrl: http://sonar:9000
-jira:
-  baseUrl: https://jira.healthedge.net
 
 # Reference documentation http://backstage.io/docs/features/techdocs/configuration
 # Note: After experimenting with basic setup, use CI/CD to generate docs
@@ -88,6 +84,8 @@ catalog:
   rules:
     - allow: [Component, System, API, Group, User, Resource, Location]
   locations:
+    - type: bitbucket-discovery
+      target: https://bitbucket.org/pbhattad/dashboard-spike/src/master/catalog-info.yaml
     # Backstage example components
     - type: url
       target: https://github.com/backstage/backstage/blob/master/packages/catalog-model/examples/all-components.yaml
