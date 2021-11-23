@@ -48,7 +48,7 @@ proxy:
     # Environmental variable: SONARQUBE_TOKEN
     # Fetch the sonar-auth-token from https://sonarcloud.io/account/security/
   '/jira':
-    target: https://jira.healthedge.net/api
+    target: https://jira.healthedge.net
     headers:
       Authorization:
         $env: JIRA_TOKEN
