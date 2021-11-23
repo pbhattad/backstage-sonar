@@ -7,7 +7,7 @@ metadata:
   annotations:
     sonarqube.org/project-key: com.healthedge.core:core-parent
     # sonarqube.org/project-key: com.healthedge.connector:connector-versions
-    jira/project-key: PAYOR
+    jira/project-key: CMSUST
 spec:
   type: library
   owner: guest
