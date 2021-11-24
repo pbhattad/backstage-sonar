@@ -34,6 +34,8 @@ integrations:
   bitbucket:
     - host: bitbucket.org
       token: ${BITBUCKET_TOKEN}
+      username: ${BITBUCKET_USERNAME}
+      password: ${BITBUCKET_PASSWORD}
     ### Example for how to add your GitHub Enterprise instance using the API:
     # - host: ghe.example.net
     #   apiBaseUrl: https://ghe.example.net/api/v3
