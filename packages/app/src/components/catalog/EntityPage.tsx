@@ -55,37 +55,17 @@ import {
 import { EntityTechdocsContent } from '@backstage/plugin-techdocs';
 import { EmptyState } from '@backstage/core-components';
 import { EntitySonarQubeCard } from '@backstage/plugin-sonarqube';
-import {
-  EntityJenkinsContent,
-  EntityLatestJenkinsRunCard,
-  isJenkinsAvailable,
-} from '@backstage/plugin-jenkins';
+import { EntityJenkinsContent } from '@backstage/plugin-jenkins';
 import { EntityJiraOverviewCard, isJiraAvailable } from '@roadiehq/backstage-plugin-jira';
 
 const serviceEntityPage = (
   <EntityLayout>
-    <EntityLayout.Route path="/" title="Overview">
-      {/* ... */}
-      <EntitySwitch>
-        <EntitySwitch.Case if={isJenkinsAvailable}>
-          <Grid item sm={6}>
-            <EntityLatestJenkinsRunCard branch="master" variant="gridItem" />
-          </Grid>
-        </EntitySwitch.Case>
-        {/* ... */}
-      </EntitySwitch>
-    </EntityLayout.Route>
-    {/* other tabs... */}
-    <EntityLayout.Route path="/ci-cd" title="CI/CD">
-      <EntitySwitch>
-        <EntitySwitch.Case if={isJenkinsAvailable}>
-          <EntityJenkinsContent />
-        </EntitySwitch.Case>
-        {/* ... */}
-      </EntitySwitch>
-    </EntityLayout.Route>
-    {/* ... */}
-  </EntityLayout>
+  ...
+  <EntityLayout.Route path="/jenkins" title="Jenkins">
+    <EntityJenkinsContent />
+  </EntityLayout.Route>
+  ...
+</EntityLayout>
 );
 
 const cicdContent = (
