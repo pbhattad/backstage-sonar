@@ -57,7 +57,7 @@ proxy:
       Content-Type: 'application/json'
       X-Atlassian-Token: 'no-check'
       # This is a workaround since Jira APIs reject browser origin requests. Any dummy string without whitespace works.
-      User-Agent: "AnyRandomString"
+      User-Agent: "my-ua-str"
 
 sonarQube:
   baseUrl: http://sonar:9000
