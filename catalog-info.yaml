@@ -8,6 +8,7 @@ metadata:
     sonarqube.org/project-key: com.healthedge.core:core-parent
     # sonarqube.org/project-key: com.healthedge.connector:connector-versions
     jira/project-key: CMSUST
+    jenkins.io/job-full-name: Enrollment/Latest/connector-enrollment-commit
 spec:
   type: library
   owner: guest

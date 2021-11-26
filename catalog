@@ -1,0 +1,6 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: connector-enrollment
+  annotations:
+    jenkins.io/job-full-name: Enrollment/Latest/connector-enrollment-commit
