@@ -60,11 +60,9 @@ import { EntityJiraOverviewCard, isJiraAvailable } from '@roadiehq/backstage-plu
 
 const serviceEntityPage = (
   <EntityLayout>
-  ...
-  <EntityLayout.Route path="/jenkins" title="Jenkins">
-    <EntityJenkinsContent />
-  </EntityLayout.Route>
-  ...
+    <EntityLayout.Route path="/jenkins" title="Jenkins">
+      <EntityJenkinsContent />
+    </EntityLayout.Route>
 </EntityLayout>
 );
 
