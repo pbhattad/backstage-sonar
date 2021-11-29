@@ -58,11 +58,11 @@ proxy:
       X-Atlassian-Token: 'no-check'
       # This is a workaround since Jira APIs reject browser origin requests. Any dummy string without whitespace works.
       User-Agent: "my-ua-str"
-  '/jenkins/api':
-    target: http://localhost:8080
-    changeOrigin: true
-    headers:
-      Authorization: Basic ${JENKINS_BASIC_AUTH_HEADER}
+  # '/jenkins/api':
+  #   target: http://localhost:8080
+  #   changeOrigin: true
+  #   headers:
+  #     Authorization: Basic ${JENKINS_BASIC_AUTH_HEADER}
 
 sonarQube:
   baseUrl: http://sonar:9000

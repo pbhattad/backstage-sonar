@@ -1,4 +1,4 @@
 jenkins:
   baseUrl: http://engsvc-engjen1:8080/
   username: ${JENKINS_USERNAME}
-  apiKey: ${JENKINS_PASSWORD}
+  apiKey: ${JENKINS_API_TOKEN}
