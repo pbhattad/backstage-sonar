@@ -11,12 +11,12 @@ backend:
     port: 7000
   csp:
     connect-src: ["'self'", 'http:', 'https:']
-    # img-src: 
-    #   # "'self'" and 'data' are from the backstage default but must be set since img-src is overriden
-    #   - "'self'"
-    #   - 'data:'
-    #   # Allow your Jira instance for @roadiehq/backstage-plugin-jira
-    #   - 'https://jira.healthedge.net'
+    img-src: 
+      # "'self'" and 'data' are from the backstage default but must be set since img-src is overriden
+      - "'self'"
+      - 'data:'
+      # Allow your Jira instance for @roadiehq/backstage-plugin-jira
+      - 'https://jira.healthedge.net'
     # Content-Security-Policy directives follow the Helmet format: https://helmetjs.github.io/#reference
     # Default Helmet Content-Security-Policy values can be removed by setting the key to false
   cors:
@@ -48,17 +48,17 @@ proxy:
     auth: '${SONARQUBE_TOKEN}:'
     # Environmental variable: SONARQUBE_TOKEN
     # Fetch the sonar-auth-token from https://sonarcloud.io/account/security/
+  proxy:
   '/jira/api':
     target: https://jira.healthedge.net
-    allowedMethods: ['GET']
-    auth: '${JIRA_API_TOKEN}:'
-    # headers:
-    #   Authorization: ${JIRA_API_TOKEN}
-    #   Accept: 'application/json'
-    #   Content-Type: 'application/json'
-    #   X-Atlassian-Token: 'no-check'
-    #   # This is a workaround since Jira APIs reject browser origin requests. Any dummy string without whitespace works.
-    #   User-Agent: "teststring"
+    headers:
+      Authorization:
+        $env: JIRA_TOKEN
+      Accept: 'application/json'
+      Content-Type: 'application/json'
+      X-Atlassian-Token: 'no-check'
+      # This is a workaround since Jira APIs reject browser origin requests. Any dummy string without whitespace works.
+      User-Agent: "AnyRandomString"
   # '/jenkins/api':
   #   target: http://localhost:8080
   #   changeOrigin: true
