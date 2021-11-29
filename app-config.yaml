@@ -50,13 +50,15 @@ proxy:
     # Fetch the sonar-auth-token from https://sonarcloud.io/account/security/
   '/jira/api':
     target: https://jira.healthedge.net
-    headers:
-      Authorization: ${JIRA_API_TOKEN}
-      Accept: 'application/json'
-      Content-Type: 'application/json'
-      X-Atlassian-Token: 'no-check'
-      # This is a workaround since Jira APIs reject browser origin requests. Any dummy string without whitespace works.
-      User-Agent: "teststring"
+    allowedMethods: ['GET']
+    auth: '${JIRA_API_TOKEN}:'
+    # headers:
+    #   Authorization: ${JIRA_API_TOKEN}
+    #   Accept: 'application/json'
+    #   Content-Type: 'application/json'
+    #   X-Atlassian-Token: 'no-check'
+    #   # This is a workaround since Jira APIs reject browser origin requests. Any dummy string without whitespace works.
+    #   User-Agent: "teststring"
   # '/jenkins/api':
   #   target: http://localhost:8080
   #   changeOrigin: true
