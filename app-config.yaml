@@ -16,7 +16,7 @@ backend:
       - "'self'"
       - 'data:'
       # Allow your Jira instance for @roadiehq/backstage-plugin-jira
-      - 'JIRA_URL'
+      - 'https://jira.healthedge.net'
     # Content-Security-Policy directives follow the Helmet format: https://helmetjs.github.io/#reference
     # Default Helmet Content-Security-Policy values can be removed by setting the key to false
   cors:
@@ -57,7 +57,7 @@ proxy:
       Content-Type: 'application/json'
       X-Atlassian-Token: 'no-check'
       # This is a workaround since Jira APIs reject browser origin requests. Any dummy string without whitespace works.
-      User-Agent: "my-ua-str"
+      User-Agent: "teststring"
   # '/jenkins/api':
   #   target: http://localhost:8080
   #   changeOrigin: true
