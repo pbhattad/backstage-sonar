@@ -51,8 +51,7 @@ proxy:
   '/jira/api':
     target: https://jira.healthedge.net
     headers:
-      Authorization:
-        $env : JIRA_TOKEN
+      Authorization: 'Basic ${JIRA_API_TOKEN}'
       Accept: 'application/json'
       Content-Type: 'application/json'
       X-Atlassian-Token: 'no-check'
