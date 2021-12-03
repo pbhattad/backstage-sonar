@@ -32,10 +32,12 @@ backend:
 
 integrations:
   bitbucket:
-    - host: bitbucket.org
-      token: ${BITBUCKET_TOKEN}
-      username: ${BITBUCKET_USERNAME}
-      password: ${BITBUCKET_PASSWORD}
+      - host: bitbucket.org
+        apiBaseUrl: https://api.bitbucket.org/2.0/repositories/healthedge/
+        token: bUR3bjTYTyKNSCxoKvOtUr38iPA78r-ODPqfz2UwEFwSjjco_4wWGtWKSqp1xM78jRTobHs2X1lb37KbWckV36RPNr9Oy_HZDxHBvOCgKhuYzwyQ6sP1pns= # https://confluence.atlassian.com/bitbucketserver/personal-access-tokens-939515499.html
+
+      # username: ${BITBUCKET_USERNAME}
+      # password: ${BITBUCKET_PASSWORD}
     ### Example for how to add your GitHub Enterprise instance using the API:
     # - host: ghe.example.net
     #   apiBaseUrl: https://ghe.example.net/api/v3
@@ -48,7 +50,6 @@ proxy:
     auth: '${SONARQUBE_TOKEN}:'
     # Environmental variable: SONARQUBE_TOKEN
     # Fetch the sonar-auth-token from https://sonarcloud.io/account/security/
-  proxy:
   '/jira/api':
     target: https://jira.healthedge.net
     headers:
@@ -59,14 +60,13 @@ proxy:
       X-Atlassian-Token: 'no-check'
       # This is a workaround since Jira APIs reject browser origin requests. Any dummy string without whitespace works.
       User-Agent: "AnyRandomString"
-  # '/jenkins/api':
-  #   target: http://localhost:8080
-  #   changeOrigin: true
-  #   headers:
-  #     Authorization: Basic ${JENKINS_BASIC_AUTH_HEADER}
 
 sonarQube:
   baseUrl: http://sonar:9000
+jenkins:
+  baseUrl: http://engsvc-engjen1:8080/
+  username: ${JENKINS_USERNAME}
+  apiKey: ${JENKINS_API_TOKEN}
 
 # Reference documentation http://backstage.io/docs/features/techdocs/configuration
 # Note: After experimenting with basic setup, use CI/CD to generate docs
@@ -93,7 +93,7 @@ catalog:
     - allow: [Component, System, API, Group, User, Resource, Location]
   locations:
     - type: bitbucket-discovery
-      target: https://bitbucket.org/pbhattad/dashboard-spike/src/master/catalog-info.yaml
+      target: https://bitbucket.org/healthedge/payor-core
     # Backstage example components
     - type: url
       target: https://github.com/backstage/backstage/blob/master/packages/catalog-model/examples/all-components.yaml
